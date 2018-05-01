@@ -53,11 +53,13 @@ object IPLocation {
       if (-1 != ipIdx) {
         val ipInfo = ipInfoBroadcast.value(ipIdx)
         ipInfo
+      } else {
+        None
       }
     })
 
     println("=========================")
-    println(result.collect().toBuffer)
+    println(result.filter(_!=None).collect().toBuffer)
 
     sc.stop()
   }
